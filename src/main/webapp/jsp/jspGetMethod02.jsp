@@ -11,32 +11,20 @@
 
 <body>
 	<%
-	Date date = new Date();
-	SimpleDateFormat day = new SimpleDateFormat("오늘 날짜 yyyy년M월dd일");
-	SimpleDateFormat time = new SimpleDateFormat("현재 시간 HH시mm분ss초");
+	Date now = new Date();
 	
-	
-	String nowDay = day.format(date);
-	String nowTime =time.format(date);
-	
+	SimpleDateFormat formatter = null;
 	String what = request.getParameter("what");
 	
-	//what = date
-	//날짜 보여주고
-	
-	//what = time
-	//시간 보여주고
-	
-	String formatString = null;
-	
-	if(what.equals("date")){
-		formatString = nowDay;
+	if(what.equals("day")){
+		formatter =  new SimpleDateFormat("오늘 날짜 yyyy년 M월 dd일 ");	
 	}else if(what.equals("time")){
-		formatString = nowTime;		
+		formatter = new SimpleDateFormat("현재 시간 HH시 mm분 ss초");
 	}
+		String want = formatter.format(now);
 	%>
-	
-	
+		
+		<h1><%=want%></h1>
 	
 
 </body>
