@@ -8,6 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <title></title>
 </head>
 
@@ -37,32 +41,42 @@
     list.add(map);
     
  	String menu = request.getParameter("menu");
- 	String point = request.getParameter("check");
+ 	String check = request.getParameter("check");
+
     
 	%>
 	
-	<h1>검색결과</h1>
+	<div class="display-4 text-center">검색결과</div>
 	
-	<table>
+	<table class="table text-center" border-collapse: collapse>
 	
 		<thead>
 			<tr>
-				<td>메뉴</td>
-				<td>상호</td>
-				<td>별점</td>
+				<th>메뉴</th>
+				<th>상호</th>
+				<th>별점</th>
 			</tr>	
 		</thead>
 		<tbody>
-			<%for(Map store:list){
+			<%
+			for(Map store:list){
 			if(store.get("menu").equals(menu)){
- 				%>					
+				if(check == null || check != null && (Double)store.get("point") > 4.0){%>
+ 									<!-- 객체는 래퍼클래스로 묶어준다..... -->
 			<tr>
 				<td><%=store.get("menu")%></td>
 				<td><%=store.get("name") %></td>
 				<td><%=store.get("point") %></td>
-			</tr>			
+			</tr>	
+					
 			<%}
+				
+				%>
+				
+				
+				<%}
 			}%>
+			
 		</tbody>
 	
 	</table>

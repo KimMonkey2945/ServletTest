@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <title>책목록</title>
 </head>
 <body>
@@ -53,25 +57,26 @@
         } 
     };
     list.add(map);
-	request.getParameter("explannation");
+
+    String id = request.getParameter("id");
 	
 	%>
 	
-	<table>
-	<h1>책목록</h1>
+	<div class="display-4 text-center">책목록</div>
+	<table class="table text-center" border-collapse: collapse>
 		<thead>
 			<tr>
-				<td>id</td>
-				<td>표지</td>
-				<td>제목</td>
+				<th class="col-2">id</th>
+				<th class="col-3">표지</th>
+				<th class="col-7" >제목</th>
 			</tr>
 		</thead>
 		<tbody>
 			<%for(Map bookList:list){%>
 			<tr>
 				<td><%=bookList.get("id") %></td>
-				<td><image src="<%=bookList.get("image")%>" alt="책표지"></a></td>
-				<td><a href="#<%=bookList.get("id")%>"><%=bookList.get("title")%></a></td>
+				<td ><image class="col-6" src="<%=bookList.get("image")%>" alt="책표지"></a></td>
+				<td><a class="display-4" href="/jsp/jsp제어문3.jsp"><%=bookList.get("title")%></a></td>
 			</tr>
 			<%} %>
 		</tbody>
