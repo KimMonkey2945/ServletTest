@@ -36,16 +36,11 @@
     {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
     list.add(map);
     
-    request
-    
-    
-    
-    
-    
-    
-    
+ 	String menu = request.getParameter("menu");
+ 	String point = request.getParameter("check");
     
 	%>
+	
 	<h1>검색결과</h1>
 	
 	<table>
@@ -58,13 +53,16 @@
 			</tr>	
 		</thead>
 		<tbody>
-			<%for(Map store:list){%>								
+			<%for(Map store:list){
+			if(store.get("menu").equals(menu)){
+ 				%>					
 			<tr>
 				<td><%=store.get("menu")%></td>
 				<td><%=store.get("name") %></td>
 				<td><%=store.get("point") %></td>
 			</tr>			
-			<%}%>
+			<%}
+			}%>
 		</tbody>
 	
 	</table>

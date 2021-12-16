@@ -11,9 +11,9 @@
 	<form method="post" action="/jsp/jsp제어문2.jsp">
 	
 		<h1>메뉴검색</h1>
-		<input type="text">
-		<input type="checkbox">4점 이하 제외 <br>
-		<input type="button" value="검색">	
+		<input type="text" name="menu">
+		<input type="checkbox" name="check">4점 이하 제외 <br>
+		<input type="submit" value="검색">	
 	
 	
 	

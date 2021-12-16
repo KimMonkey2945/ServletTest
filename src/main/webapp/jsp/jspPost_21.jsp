@@ -9,6 +9,7 @@
 
 
 <body>
+
 	<form method="post" action="/jsp/jspPost_22.jsp">
 		<h1>길이변환</h1>
 		
