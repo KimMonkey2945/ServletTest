@@ -11,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <title>상세설명</title>
 </head>
+<!-- 파라미터 연결을 시켜주는 것 뿐이지 각자 다른 페이지 웹페이지는 모두 독립되어있다!!! 모듈화 되어있다!!!! 헷갈리지 않도록!!.... -->
 
 <body>
 	<%
@@ -59,21 +60,27 @@
     };
     list.add(map);
     
+    String id = request.getParameter("id");
     
 	%>
-<!-- 파라미터 연결을 시켜주는 것 뿐이지 각자 다른 페이지 웹페이지는 모두 독립되어있다!!! 모듈화 되어있다!!!! 헷갈리지 않도록!!.... -->		
-			<div class="d-flex" id="1001">
-				<div>
-				<image alt="아몬드 표지"src="http://image.kyobobook.co.kr/images/book/xlarge/267/x9788936434267.jpg">
-				</image>
-				</div>
-				<div>
-					<div class="display-2 font-weight-bold">아몬드</div>
-					<div class="display-3 text-info">손원평</div>
-					<div  class="display-4 text-secondary">창비</div>
-				</div>
-			</div>		
-
+	
+	<%for(Map<String,Object> bookEx:list){
+		if(bookEx.get("id").equals(id)){%>
+			
+		<div class="d-flex">
+			<div>
+				<image alt="<%=bookEx.get("title")%>표지" src="<%=bookEx.get("image")%>"></image>
+			</div>
+			<div>
+				<div class="display-2 font-weight-bold"><%=bookEx.get("title")%></div>
+				<div class="display-3 text-info"><%=bookEx.get("author")%></div>
+				<div  class="display-4 text-secondary"><%=bookEx.get("publisher")%></div>
+			</div>
+		</div>
+			
+		<%} 
+		}%>
+		
 </body>
 
 </html>

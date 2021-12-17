@@ -72,11 +72,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%for(Map bookList:list){%>
+			<%for(Map<String,Object> bookList:list){%>
 			<tr>
 				<td><%=bookList.get("id") %></td>
 				<td ><image class="col-6" src="<%=bookList.get("image")%>" alt="책표지"></a></td>
-				<td><a class="display-4" href="/jsp/jsp제어문3.jsp"><%=bookList.get("title")%></a></td>
+				<td><a class="display-4" href="/jsp/jsp제어문3.jsp?id=<%=bookList.get("id")%>"><%=bookList.get("title")%></a></td>
 			</tr>
 			<%} %>
 		</tbody>
