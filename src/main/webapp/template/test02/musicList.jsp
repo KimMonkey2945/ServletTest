@@ -19,13 +19,36 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
-<title>Insert title here</title>
+<title>음악정보</title>
 </head>
 <body>
 	<%@ include file="infoList.jsp"%>
 
 	<%
-	Integer id = Integer.parseInt(request.getParameter("id"));
+	
+	String idString = request.getParameter("id");
+	Map<String, Object> targetMap = null;
+	
+	if(idString != null){
+		Integer musicId = Integer.parseInt(idString);
+		for(Map<String, Object> music:musicList){
+			Integer id = (Integer)music.get("id");
+			if(musicId.equals(id)){
+				targetMap = music;
+			}
+		}
+	}
+	String title = request.getParameter("title");
+	if(title != null){
+		for(Map<String, Object>music:musicList){
+			if(music.get("title").equals(title)){
+				targetMap = music;
+			}
+		}
+	}
+	
+	Integer time = (Integer)targetMap.get("time");
+	
 	%>
 	<div class="container">
 		<jsp:include page="header.jsp" />
@@ -33,30 +56,25 @@
 
 		<h3 class="mt-3">곡정보</h3>
 
-		<div class="d-flex"
-			style="height: auto; width: 100%; border: 1px solid #B2FA5C">
+		<div class="d-flex border border-success">
 
-			<%
-			for (Map<String, Object> music : musicList) {
-				if (music.get("id").equals(id)) {
-			%>
 			<div>
-				<img width="300px" alt="<%=music.get("album")%>앨범표지" src="<%=music.get("thumbnail")%>">
+				<img class="p-3" width="250px" alt="<%=targetMap.get("album")%>앨범표지" src="<%=targetMap.get("thumbnail")%>">
 			</div>
-			<div class="ml-3">
-				<div class="display-4"><%=music.get("title")%></div>
-				<div class="text-success mt-3"><%=music.get("singer")%></div>
+			<div class="ml-2">
+				<div class="display-4"><%=targetMap.get("title")%></div>
+				<div class="text-success mt-2"><%=targetMap.get("singer")%></div>
 				<div class="text-secondary">
-					앨범<label class="ml-4 mt-5"><%=music.get("album")%></label>
+					앨범<label class="ml-4 mt-3"><%=targetMap.get("album")%></label>
 				</div>
 				<div class="text-secondary">
-					재생시간<label class="ml-4"><%=music.get("time")%></label>
+					재생시간<label class="ml-4"><%=time/60 + " : " + time%60%></label>
 				</div>
 				<div class="text-secondary">
-					작곡가<label class="ml-4"><%=music.get("composer")%></label>
+					작곡가<label class="ml-4"><%=targetMap.get("composer")%></label>
 				</div>
 				<div class="text-secondary">
-					작사가<label class="ml-4"><%=music.get("lyricist")%></label>
+					작사가<label class="ml-4"><%=targetMap.get("lyricist")%></label>
 				</div>
 			</div>
 			<%

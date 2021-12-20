@@ -29,46 +29,47 @@
 		<jsp:include page="menu.jsp" />
 
 		<section>
-			<div class="d-flex mt-3" style="height: auto; width: 100%; border: 1px solid #B2FA5C">
-				<img class="d-flex" width="300" alt="아이유사진"
-					src="<%=artistInfo.get("photo")%>">
+		<!-- 부트스트랩 div테두리로 찾기..... -->
+			<article class="d-flex mt-3 border border-success p-3">
 				<div>
-					<h3><%=artistInfo.get("name")%></h3>
-					<div><%=artistInfo.get("agency")%></div>
-					<div><%=artistInfo.get("debute")%></div>
+				<img width="200px" alt="아이유사진" src="<%=artistInfo.get("photo")%>">
 				</div>
-			</div>
-			<table class="table text-center" border-collapse: collapse>
-				<thead>
-					<tr>
-						<th>no</th>
-						<th>제목</th>
-						<th>앨범</th>
-					</tr>
-				</thead>
-				<tbody>
-					<h3 class="mt-2">
-						<b>곡목록</b>
-					</h3>
-					<%
-					for (Map<String, Object> music : musicList) {
-					%>
-					<tr>
-						<td><%=music.get("id")%>
-						</th>
-						<td><a href="/template/test02/musicList.jsp?id=<%=music.get("id")%>"><%=music.get("title")%></a>
-						</th>
-						<td><%=music.get("album")%>
-						</th>
-					</tr>
-					<%
-					}
-					%>
-
-
-				</tbody>
-			</table>
-
+				<div class="mt-2 ml-2">
+					<h2><%=artistInfo.get("name")%></h2>
+					<div class="font-weight-bold"><%=artistInfo.get("agency")%></div>
+					<div class="font-weight-bold"><%=artistInfo.get("debute")%>데뷔</div>
+				</div>
+			</article>
+			<article>
+				<table class="table text-center table-sm" border-collapse: collapse>
+					<thead>
+						<tr>
+							<th>no</th>
+							<th>제목</th>
+							<th>앨범</th>
+						</tr>
+					</thead>
+					<tbody>
+						<h3 class="mt-3">곡목록</h3>
+						<%
+						for (Map<String, Object> music : musicList) {
+						%>
+						<tr>
+							<td><%=music.get("id")%>
+							</th>
+							<td><a href="/template/test02/musicList.jsp?id=<%=music.get("id")%>"><%=music.get("title")%></a>
+							</th>
+							<td><%=music.get("album")%>
+							</th>
+						</tr>
+						<%
+						}
+						%>
+	
+	
+					</tbody>
+				</table>          
+			</article>
 			<hr>
 		</section>
 		<jsp:include page="footer.jsp" />
