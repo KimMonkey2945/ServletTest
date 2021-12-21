@@ -51,6 +51,7 @@
 	<div class="container">
 		<jsp:include page="header.jsp" />
 		<jsp:include page="menu.jsp" />
+<<<<<<< HEAD
 		
 		<section>
 		
@@ -90,6 +91,39 @@
 			<% } %>
 		
 		</section>
+=======
+
+		<h3 class="mt-3">곡정보</h3>
+
+		<div class="d-flex border border-success">
+
+			<div>
+				<img class="p-3" width="250px" alt="<%=targetMap.get("album")%>앨범표지" src="<%=targetMap.get("thumbnail")%>">
+			</div>
+			<div class="ml-2">
+				<div class="display-4"><%=targetMap.get("title")%></div>
+				<div class="text-success mt-2"><%=targetMap.get("singer")%></div>
+				<div class="text-secondary">
+					앨범<label class="ml-4 mt-3"><%=targetMap.get("album")%></label>
+				</div>
+				<div class="text-secondary">
+					재생시간<label class="ml-4"><%=time/60 + " : " + time%60%></label>
+				</div>
+				<div class="text-secondary">
+					작곡가<label class="ml-4"><%=targetMap.get("composer")%></label>
+				</div>
+				<div class="text-secondary">
+					작사가<label class="ml-4"><%=targetMap.get("lyricist")%></label>
+				</div>
+			</div>
+		
+		</div>
+		<h3 class="mt-4">가사</h3>
+		<hr>
+		<div>가사 정보 없음</div>
+		<hr>
+
+>>>>>>> e14025050bcf983d7739252ccd5296ec6c7f64e3
 		<jsp:include page="footer.jsp" />
 	
 	</div>
