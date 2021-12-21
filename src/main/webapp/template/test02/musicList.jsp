@@ -77,11 +77,7 @@
 					작사가<label class="ml-4"><%=targetMap.get("lyricist")%></label>
 				</div>
 			</div>
-			<%
-			}
-
-			}
-			%>
+		
 		</div>
 		<h3 class="mt-4">가사</h3>
 		<hr>
