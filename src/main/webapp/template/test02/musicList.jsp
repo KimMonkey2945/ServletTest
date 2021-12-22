@@ -26,33 +26,72 @@
 
 	<%
 	
-	String idString = request.getParameter("id");
-	Map<String, Object> targetMap = null;
-	
-	if(idString != null){
-		Integer musicId = Integer.parseInt(idString);
-		for(Map<String, Object> music:musicList){
-			Integer id = (Integer)music.get("id");
-			if(musicId.equals(id)){
-				targetMap = music;
+		String idString = request.getParameter("id");
+		Map<String, Object> targetMap = null;
+		if(idString != null) {
+			// id를 통한 검색
+			Integer musicId = Integer.parseInt(idString);
+			for(Map<String, Object> music : musicList) {
+				Integer id = (Integer)music.get("id");
+				if(musicId.equals(id)) {
+					targetMap = music;
+				}
 			}
 		}
-	}
-	String title = request.getParameter("title");
-	if(title != null){
-		for(Map<String, Object>music:musicList){
-			if(music.get("title").equals(title)){
-				targetMap = music;
+		
+		String title = request.getParameter("title");
+		if(title != null) {
+			for(Map<String, Object> music : musicList) {
+				if(title.equals(music.get("title"))) {
+					targetMap = music;
+				}
 			}
 		}
-	}
-	
-	Integer time = (Integer)targetMap.get("time");
-	
 	%>
 	<div class="container">
 		<jsp:include page="header.jsp" />
 		<jsp:include page="menu.jsp" />
+<<<<<<< HEAD
+		
+		<section>
+		
+		<% if(targetMap != null) {
+			Integer time = (Integer)targetMap.get("time");
+			%>
+	
+			<article class="music-info mt-3">
+				<h4>곡정보</h4>
+				<div class="info-box d-flex border border-success p-3">
+					<div class="ablum-img">
+						<img src="<%= targetMap.get("thumbnail") %>" width="150">
+					</div>
+					
+					<div class="detail ml-3">
+						<div class="display-4"><%=targetMap.get("title") %></div>
+						<div class="text-success font-weight-bold"><%= targetMap.get("singer") %></div>
+						<div><small>앨범 : <%=targetMap.get("album") %></small></div>
+						<div><small>재생시간 : <%= time / 60 %>:<%= time % 60 %></small></div>
+						<div><small>작곡가 : <%= targetMap.get("composer") %></small></div>
+						<div><small>작사가 : <%= targetMap.get("lyricist") %></small></div>
+					</div>
+				</div>
+			</article>
+			
+			
+			<article class="mudic-lyrics mt-3">
+				<h4>가사</h4>
+				<hr>
+				<div>가사정보 없음</div>
+			</article>
+			<% } else { %>
+				<article>
+					<div class="display-4"> 검색결과 없음 </div>
+				</article>
+				
+			<% } %>
+		
+		</section>
+=======
 
 		<h3 class="mt-3">곡정보</h3>
 
@@ -84,7 +123,10 @@
 		<div>가사 정보 없음</div>
 		<hr>
 
+>>>>>>> e14025050bcf983d7739252ccd5296ec6c7f64e3
 		<jsp:include page="footer.jsp" />
+	
 	</div>
+
 </body>
 </html>
